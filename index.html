@@ -273,23 +273,7 @@ if(tombolKuis) {
     <p style="color: #342631; font-size: 14px; font-weight: bold; margin: 0;">
         © 2026 Genreverse Indonesia. Developed & Designed by Amita Komairah Mita.
     </p>
-<!-- === FOOTER RESMI KAMUS GENRE === -->
-<div style="text-align: center; background: #fff8fc; padding: 30px 20px 100px 20px; font-family: 'Inter', sans-serif; border-top: 1px solid #f4dce9; margin-top: 40px;">
-    <h3 style="color: #8d477b; font-size: 16px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">KAMUS GENRE INDONESIA</h3>
-    <p style="color: #666; font-size: 14px; margin: 0 0 20px 0;">Kenali Istilah, Pahami Diri</p>
-    
-    <p style="color: #666; font-size: 14px; line-height: 1.6; max-width: 600px; margin: 0 auto 20px auto;">
-        Inovasi media edukasi Generasi Berencana (GenRe) untuk remaja sehat, cerdas, dan ceria.
-    </p>
-    
-    <p style="color: #999; font-size: 12px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px auto; font-style: italic;">
-        Materi ini bersifat edukasi umum remaja dan pembinaan keluarga. Bukan merupakan pengganti diagnosis atau resep medis formal. Konsultasikan kondisi kesehatan dengan dokter atau fasilitas kesehatan tepercaya.
-    </p>
-    
-    <p style="color: #342631; font-size: 14px; font-weight: bold; margin: 0;">
-        © 2026 Kamus GenRe Indonesia. Developed & Designed by Amita Komairah Mita.
-    </p>
-</div>
+
 
 <!-- Wadah Kotak Tantangan Yang Akan Muncul Otomatis -->
 <div id="section-challenge" style="text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 24px rgba(141, 71, 123, 0.1); margin: 30px auto; max-width: 500px; box-sizing: border-box; display: none;">
@@ -304,79 +288,6 @@ if(tombolKuis) {
 </div>
 
 <script>
-    const listMisi30Hari = [
-      "Pahami pengertian GenRe dan cari tahu kepanjangannya hari ini.",
-      "Minum air putih minimal 8 gelas agar tubuh tetap bugar sepanjang hari.",
-      "Tuliskan 3 target atau cita-cita terbesarmu di masa depan dalam buku catatan.",
-      "Pelajari apa itu stunting dan cara pencegahannya sejak dini.",
-      "Lakukan olahraga ringan selama 15 menit di pagi atau sore hari.",
-      "Baca artikel singkat mengenai kesehatan reproduksi remaja.",
-      "Kurangi waktu bermain media sosial selama 2 jam hari ini untuk fokus belajar.",
-      "Ucapkan terima kasih dan berikan apresiasi positif kepada orang tuamu.",
-      "Pahami batasan usia ideal menikah bagi laki-laki dan perempuan menurut BKKBN.",
-      "Rapikan meja belajar dan kamar tidurmu agar suasana pikiran lebih segar.",
-      "Cari tahu apa saja bahaya pernikahan dini bagi masa depan remaja.",
-      "Konsumsi buah atau sayuran segar hari ini untuk menjaga nutrisi tubuh.",
-      "Diskusikan rencana masa depan bersama teman dekat atau saudaramu.",
-      "Hindari konsumsi makanan cepat saji (fast food) sepanjang hari ini.",
-      "Pelajari apa itu PIK-R terdekat.",
-      "Tuliskan 3 hal yang paling kamu syukuri atas dirimu sendiri malam ini.",
-      "Pahami dampak negatif pergaulan bebas dan carilah lingkaran pertemanan positif.",
-      "Tidur tepat waktu malam ini (minimal 7-8 jam) agar besok bangun dengan segar.",
-      "Cari tahu pengertian Triad KRR.",
-      "Membantu membersihkan rumah tanpa diminta oleh orang tua.",
-      "Pelajari cara mengelola emosi atau stres dengan meditasi ringan.",
-      "Buat daftar pengeluaran atau tabungan mingguan secara rapi.",
-      "Cari tahu peran penting Duta GenRe di wilayah tempat tinggalmu.",
-      "Buat satu karya kreatif pendek tentang remaja produktif.",
-      "Pelajari apa itu anemia pada remaja dan bagaimana cara mencegahnya.",
-      "Sampaikan 1 edukasi positif seputar remaja sehat ke status sosial media.",
-      "Berani mengatakan 'Tidak' pada hal-hari negatif di lingkungan sekitar.",
-      "Pahami konsep 'Life Planning' atau merencanakan kehidupan berkeluarga.",
-      "Evaluasi target-target hari ke-3 yang sudah kamu tulis.",
-      "Selamat! Hari terakhir: Bagikan pengalaman sukses 30 hari challenge ini!"
-    ];
-
-    const tglSkarang = new Date();
-    const hariKe = (tglSkarang.getDate() % 30) || 30;
-
-    // Masukkan data ke dalam kotak tantangan
-    document.getElementById('label-hari-genre').innerText = "Hari Ke-" + hariKe;
-    document.getElementById('konten-misi-genre').innerText = listMisi30Hari[hariKe - 1];
-
-    // Fungsi tombol selesai tantangan
-    document.getElementById('done-challenge-btn').addEventListener('click', function() {
-      this.style.backgroundColor = '#2e7d32';
-      this.style.borderColor = '#2e7d32';
-      this.style.color = 'white';
-      this.innerText = '✓ Tantangan Hari Ini Selesai!';
-      this.disabled = true;
-    });
-
-    // Fungsi menampilkan kotak tantangan saat menu bawah diklik
-    function aktifkanTantangan() {
-      const cBox = document.getElementById('section-challenge');
-      if(cBox) {
-        cBox.style.display = 'block';
-        cBox.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    // Mengaitkan tombol menu navigasi bawah secara otomatis
-    setTimeout(function() {
-      const semuaTombolMenu = document.querySelectorAll('nav a, .menu-item, [href*="kuis"], #restart');
-      semuaTombolMenu.forEach(tombol => {
-        if (tombol.innerText.toLowerCase().includes('kuis') || 
-            tombol.innerText.toLowerCase().includes('edukasi') || 
-            tombol.innerText.toLowerCase().includes('challenge')) {
-            
-            tombol.addEventListener('click', function(e) {
-                e.preventDefault();
-                aktifkanTantangan();
-            });
-        }
-      });
-    }, 500);
 </script>
 </body>
 
