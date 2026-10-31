@@ -1,4 +1,4 @@
-s<!DOCTYPE html>
+8s<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -175,7 +175,6 @@ function resetQuiz(){qi=0;score=0;document.getElementById('quiz-area').classList
 document.getElementById('restart').addEventListener('click',resetQuiz);renderQ();
 document.getElementById('make-plan').addEventListener('click',()=>{const dream=document.getElementById('dream').value.trim(),step=document.getElementById('step').value.trim(),out=document.getElementById('plan-output');if(!dream||!step){out.textContent='Isi cita-cita dan satu langkah kecilmu terlebih dahulu.';out.classList.remove('hidden');return;}out.innerHTML='🌟 <b>Kartu tekadku</b><br>Aku ingin: '+escapeHtml(dream)+'<br>Langkah pertamaku: '+escapeHtml(step)+'<br><br>Aku akan berusaha selangkah demi selangkah!';out.classList.remove('hidden');});
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-</script>
 
 <!-- === FOOTER RESMI GENREVERSE  === -->
 <div style="text-align: center; background: #fff8fc; padding: 30px 20px 100px 20px; font-family: 'Inter', sans-serif; border-top: 1px solid #f4dce9; margin-top: 40px;">
@@ -192,20 +191,7 @@ function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','
     
     <p style="color: #342631; font-size: 14px; font-weight: bold; margin: 0;">
         © 2026 Genreverse Indonesia. Developed & Designed by Amita Komairah Mita.
-    </p>
-
-
-<!-- Wadah Kotak Tantangan Yang Akan Muncul Otomatis -->
-<div id="section-challenge" style="text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 24px rgba(141, 71, 123, 0.1); margin: 30px auto; max-width: 500px; box-sizing: border-box; display: none;">
-    <h2 style="color: #8d477b; font-size: 24px; margin-bottom: 5px;">30 Hari GenRe Challenge 🏆</h2>
-    <p style="font-size: 14px; color: #666; margin-bottom: 25px;">Selesaikan 1 misi positif setiap hari selama 30 hari!</p>
-    <div id="label-hari-genre" style="background-color: #8d477b; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; font-size: 18px; display: inline-block; margin-bottom: 20px;">Hari Ke-1</div>
-    <div style="background: #fafafa; border: 2px dashed #8d477b; padding: 20px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
-        <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 10px;">Misi Hari Ini</div>
-        <div id="konten-misi-genre" style="font-size: 18px; font-weight: 600; line-height: 1.5; color: #342631;">Memuat misi...</div>
-    </div>
-    <button id="done-challenge-btn" style="background-color: white; border: 2px solid #8d477b; color: #8d477b; padding: 12px 25px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 16px; width: 100%;">Selesai Tantangan</button>
-</div>
+  
 
 <script>
 </script>
