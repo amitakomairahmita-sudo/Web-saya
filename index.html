@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GENREVERS</title>
+<title>GENREVERSE</title>
 <style>
 :root {
   --site-primary: #8d477b;
@@ -257,6 +257,22 @@ if(tombolKuis) {
   });
 }
 
+<!-- === FOOTER RESMI GENREVERSE  === -->
+<div style="text-align: center; background: #fff8fc; padding: 30px 20px 100px 20px; font-family: 'Inter', sans-serif; border-top: 1px solid #f4dce9; margin-top: 40px;">
+    <h3 style="color: #8d477b; font-size: 16px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">KAMUS GENRE INDONESIA</h3>
+    <p style="color: #666; font-size: 14px; margin: 0 0 20px 0;">Kenali Istilah, Pahami Diri</p>
+    
+    <p style="color: #666; font-size: 14px; line-height: 1.6; max-width: 600px; margin: 0 auto 20px auto;">
+        Inovasi media edukasi Generasi Berencana (GenRe) untuk remaja sehat, cerdas, dan ceria.
+    </p>
+    
+    <p style="color: #999; font-size: 12px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px auto; font-style: italic;">
+        Materi ini bersifat edukasi umum remaja dan pembinaan keluarga. Bukan merupakan pengganti diagnosis atau resep medis formal. Konsultasikan kondisi kesehatan dengan dokter atau fasilitas kesehatan tepercaya.
+    </p>
+    
+    <p style="color: #342631; font-size: 14px; font-weight: bold; margin: 0;">
+        © 2026 Genreverse Indonesia. Developed & Designed by Amita Komairah Mita.
+    </p>
 <!-- === FOOTER RESMI KAMUS GENRE === -->
 <div style="text-align: center; background: #fff8fc; padding: 30px 20px 100px 20px; font-family: 'Inter', sans-serif; border-top: 1px solid #f4dce9; margin-top: 40px;">
     <h3 style="color: #8d477b; font-size: 16px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">KAMUS GENRE INDONESIA</h3>
@@ -275,8 +291,19 @@ if(tombolKuis) {
     </p>
 </div>
 
+<!-- Wadah Kotak Tantangan Yang Akan Muncul Otomatis -->
+<div id="section-challenge" style="text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 24px rgba(141, 71, 123, 0.1); margin: 30px auto; max-width: 500px; box-sizing: border-box; display: none;">
+    <h2 style="color: #8d477b; font-size: 24px; margin-bottom: 5px;">30 Hari GenRe Challenge 🏆</h2>
+    <p style="font-size: 14px; color: #666; margin-bottom: 25px;">Selesaikan 1 misi positif setiap hari selama 30 hari!</p>
+    <div id="label-hari-genre" style="background-color: #8d477b; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; font-size: 18px; display: inline-block; margin-bottom: 20px;">Hari Ke-1</div>
+    <div style="background: #fafafa; border: 2px dashed #8d477b; padding: 20px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
+        <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 10px;">Misi Hari Ini</div>
+        <div id="konten-misi-genre" style="font-size: 18px; font-weight: 600; line-height: 1.5; color: #342631;">Memuat misi...</div>
+    </div>
+    <button id="done-challenge-btn" style="background-color: white; border: 2px solid #8d477b; color: #8d477b; padding: 12px 25px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 16px; width: 100%;">Selesai Tantangan</button>
+</div>
+
 <script>
-    // --- KODE SISTEM TANTANGAN 30 HARI ---
     const listMisi30Hari = [
       "Pahami pengertian GenRe dan cari tahu kepanjangannya hari ini.",
       "Minum air putih minimal 8 gelas agar tubuh tetap bugar sepanjang hari.",
@@ -313,25 +340,11 @@ if(tombolKuis) {
     const tglSkarang = new Date();
     const hariKe = (tglSkarang.getDate() % 30) || 30;
 
-    // Membuat kotak tantangan 30 hari otomatis di dalam halaman
-    const kotakTantangan = document.createElement('div');
-    kotakTantangan.id = 'section-challenge';
-    kotakTantangan.setAttribute('style', 'text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 24px rgba(141, 71, 123, 0.1); margin: 30px auto; max-width: 500px; box-sizing: border-box; display: none;');
+    // Masukkan data ke dalam kotak tantangan
+    document.getElementById('label-hari-genre').innerText = "Hari Ke-" + hariKe;
+    document.getElementById('konten-misi-genre').innerText = listMisi30Hari[hariKe - 1];
 
-    let htmlContent = '<h2 style="color: #8d477b; font-size: 24px; margin-bottom: 5px;">30 Hari GenRe Challenge 🏆</h2>';
-    htmlContent += '<p style="font-size: 14px; color: #666; margin-bottom: 25px;">Selesaikan 1 misi positif setiap hari selama 30 hari!</p>';
-    htmlContent += '<div style="background-color: #8d477b; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; font-size: 18px; display: inline-block; margin-bottom: 20px;">Hari Ke-' + hariKe + '</div>';
-    htmlContent += '<div style="background: #fafafa; border: 2px dashed #8d477b; padding: 20px; border-radius: 12px; margin-bottom: 20px; text-align: center;">';
-    htmlContent += '<div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 10px;">Misi Hari Ini</div>';
-    htmlContent += '<div style="font-size: 18px; font-weight: 600; line-height: 1.5; color: #342631;">' + listMisi30Hari[hariKe - 1] + '</div>';
-    htmlContent += '</div>';
-    htmlContent += '<button id="done-challenge-btn" style="background-color: white; border: 2px solid #8d477b; color: #8d477b; padding: 12px 25px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 16px; width: 100%;">Selesai Tantangan</button>';
-
-    kotakTantangan.innerHTML = htmlContent;
-    
-    // Memasukkan kotak tantangan tepat sebelum footer nama
-    document.body.appendChild(kotakTantangan);
-
+    // Fungsi tombol selesai tantangan
     document.getElementById('done-challenge-btn').addEventListener('click', function() {
       this.style.backgroundColor = '#2e7d32';
       this.style.borderColor = '#2e7d32';
@@ -340,6 +353,7 @@ if(tombolKuis) {
       this.disabled = true;
     });
 
+    // Fungsi menampilkan kotak tantangan saat menu bawah diklik
     function aktifkanTantangan() {
       const cBox = document.getElementById('section-challenge');
       if(cBox) {
@@ -348,15 +362,23 @@ if(tombolKuis) {
       }
     }
 
-    // Menghubungkan menu tombol Kuis di bawah otomatis ke fitur tantangan ini
-    const tombolKuis = document.getElementById('restart') || document.querySelector('[href*="kuis"]') || document.querySelectorAll('nav a')[2];
-    if(tombolKuis) {
-      tombolKuis.addEventListener('click', function(e) {
-        e.preventDefault();
-        aktifkanTantangan();
+    // Mengaitkan tombol menu navigasi bawah secara otomatis
+    setTimeout(function() {
+      const semuaTombolMenu = document.querySelectorAll('nav a, .menu-item, [href*="kuis"], #restart');
+      semuaTombolMenu.forEach(tombol => {
+        if (tombol.innerText.toLowerCase().includes('kuis') || 
+            tombol.innerText.toLowerCase().includes('edukasi') || 
+            tombol.innerText.toLowerCase().includes('challenge')) {
+            
+            tombol.addEventListener('click', function(e) {
+                e.preventDefault();
+                aktifkanTantangan();
+            });
+        }
       });
-    }
+    }, 500);
 </script>
 </body>
+
 
 
