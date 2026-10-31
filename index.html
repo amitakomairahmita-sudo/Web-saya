@@ -176,25 +176,40 @@ function resetQuiz(){qi=0;score=0;document.getElementById('quiz-area').classList
 document.getElementById('restart').addEventListener('click',resetQuiz);renderQ();
 document.getElementById('make-plan').addEventListener('click',()=>{const dream=document.getElementById('dream').value.trim(),step=document.getElementById('step').value.trim(),out=document.getElementById('plan-output');if(!dream||!step){out.textContent='Isi cita-cita dan satu langkah kecilmu terlebih dahulu.';out.classList.remove('hidden');return;}out.innerHTML='🌟 <b>Kartu tekadku</b><br>Aku ingin: '+escapeHtml(dream)+'<br>Langkah pertamaku: '+escapeHtml(step)+'<br><br>Aku akan berusaha selangkah demi selangkah!';out.classList.remove('hidden');});
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+<!-- === BAGIAN TUJUAN INOVASI === -->
+<div style="padding: 0 15px; margin-bottom: 30px; font-family: sans-serif;">
+    <!-- Teks Pelajari Panduan -->
+    <p style="color: #8d477b; font-weight: bold; font-size: 16px; margin-bottom: 25px;">
+        Pelajari Panduan →
+    </p>
 
-<!-- === FOOTER RESMI GENREVERSE  === -->
-<div style="text-align: center; background: #fff8fc; padding: 30px 20px 100px 20px; font-family: 'Inter', sans-serif; border-top: 1px solid #f4dce9; margin-top: 40px;">
-    <h3 style="color: #8d477b; font-size: 16px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">KAMUS GENRE INDONESIA</h3>
-    <p style="color: #666; font-size: 14px; margin: 0 0 20px 0;">Kenali Istilah, Pahami Diri</p>
-    
-    <p style="color: #666; font-size: 14px; line-height: 1.6; max-width: 600px; margin: 0 auto 20px auto;">
-    <p style="color: #666; font-size: 14px;">
-    Inovasi media edukasi Generasi Berencana (GenRe) <br>
-    Oleh: Nama Anda
-</p>
+    <!-- Kotak Ungu Tujuan Inovasi -->
+    <div style="background-color: #fff0f8; border-left: 5px solid #8d477b; padding: 20px; border-radius: 8px; text-align: left;">
+        <p style="color: #333; font-size: 15px; line-height: 1.6; margin: 0;">
+            💡 <strong style="color: #8d477b;">Tujuan Inovasi:</strong> Membantu remaja Indonesia memahami istilah dan materi Generasi Berencana secara mandiri dan interaktif. Berencana itu keren!
+        </p>
+    </div>
+</div>
 
+<!-- === FOOTER RESMI GENREVERSE === -->
+<div style="text-align: center; background: #ffffff; padding: 30px 15px; font-family: sans-serif;">
+    <h3 style="color: #666; font-size: 15px; font-weight: bold; margin-bottom: 5px; letter-spacing: 0.5px;">
+        KAMUS GENRE INDONESIA · <span style="font-weight: normal;">Kenali Istilah, Pahami Diri</span>
+    </h3>
     
-    <p style="color: #999; font-size: 12px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px auto; font-style: italic;">
+    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+        Inovasi media edukasi Generasi Berencana (GenRe)<br>untuk remaja sehat, cerdas, dan ceria.
+    </p>
+    
+    <p style="color: #999; font-size: 13px; max-width: 600px; margin: 0 auto 25px auto; line-height: 1.6;">
         Materi ini bersifat edukasi umum remaja dan pembinaan keluarga. Bukan merupakan pengganti diagnosis atau resep medis formal. Konsultasikan kondisi kesehatan dengan dokter atau fasilitas kesehatan tepercaya.
     </p>
     
-    <p style="color: #342631; font-size: 14px; font-weight: bold; margin: 0;">
-        © 2026 Genreverse Indonesia. Developed & Designed by Amita Komairah Mita.
+    <p style="color: #666; font-size: 14px; line-height: 1.5;">
+        © 2026 Genreverse Indonesia. Developed &<br>Designed by Amita Komairah Mita.
+    </p>
+</div>
+
   
 
 <script>
