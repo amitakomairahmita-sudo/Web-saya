@@ -1,219 +1,111 @@
-9o<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>genreverse</title>
-<style>
-:root {
-  --site-primary: #8d477b;
-  --site-on-primary: #ffffff;
-  --site-secondary: #f4dce9;
-  --site-on-secondary: #48233f;
-  --site-background: #fff8fc;
-  --site-on-background: #342631;
-  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --site-heading-scale: 1;
-  --site-spacing-scale: 1;
-  --site-radius-scale: 1;
-  --site-decoration-opacity: 1;
-  color-scheme: light dark;
-}
-* { box-sizing: border-box; }
-body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
-.app { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); }
-header { background: var(--site-primary); color: var(--site-on-primary); padding: calc(18px * var(--site-spacing-scale)) max(5vw, 20px); }
-.top { max-width: 1080px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.brand { display:flex; align-items:center; gap:11px; font-weight:850; letter-spacing:.4px; }
-.logo { width:42px; height:42px; display:grid; place-items:center; border-radius:15px; background:var(--site-secondary); color:var(--site-on-secondary); font-size:22px; }
-nav { display:flex; flex-wrap:wrap; gap:7px; }
-nav button { color:var(--site-on-primary); background:transparent; border:1px solid #ffffff55; padding:9px 12px; border-radius:999px; cursor:pointer; font-weight:650; }
-nav button:hover, nav button.active { background:var(--site-secondary); color:var(--site-on-secondary); }
-main { max-width:1080px; margin:auto; padding:30px 20px 60px; }
-.hero { display:grid; grid-template-columns:1.3fr .7fr; gap:22px; align-items:center; padding:clamp(24px,5vw,48px); border-radius:calc(28px * var(--site-radius-scale)); background:linear-gradient(130deg,var(--site-secondary),#fff); color:#43283d; overflow:hidden; }
-.hero h1 { font-family:var(--site-font-heading); font-size:calc(clamp(32px,5vw,52px) * var(--site-heading-scale)); line-height:1.05; margin:10px 0 14px; }
-.hero p { line-height:1.7; max-width:580px; }
-.eyebrow { text-transform:uppercase; letter-spacing:1.8px; font-size:12px; font-weight:850; color:#8d477b; }
-.hero-art { min-height:190px; display:grid; place-items:center; font-size:clamp(90px,15vw,150px); position:relative; }
-.hero-art:after { content:""; width:190px; height:190px; border-radius:50%; background:#ffffff8a; position:absolute; z-index:0; }
-.hero-art span { z-index:1; }
-.btn { border:0; border-radius:999px; padding:12px 18px; background:var(--site-primary); color:var(--site-on-primary); font-weight:750; cursor:pointer; }
-.btn.secondary { background:#fff; color:#743765; border:1px solid #e8cddd; }
-.section-head { display:flex; justify-content:space-between; align-items:end; gap:15px; margin:34px 0 16px; }
-.section-head h2 { margin:0; font-size:calc(25px * var(--site-heading-scale)); }
-.muted { color:#766873; line-height:1.6; }
-.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
-.card { background:light-dark(#ffffff,#29232a); border:1px solid light-dark(#f0e3eb,#51434f); border-radius:calc(20px * var(--site-radius-scale)); padding:20px; box-shadow:0 7px 22px #56344b0b; }
-.topic { cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
-.topic:hover { transform:translateY(-3px); box-shadow:0 12px 28px #56344b18; }
-.topic-icon { width:48px; height:48px; display:grid; place-items:center; background:var(--site-secondary); border-radius:16px; font-size:24px; }
-.topic h3 { margin:14px 0 7px; }
-.topic p { color:light-dark(#766873,#c4b5c1); font-size:14px; line-height:1.55; min-height:44px; }
-.arrow { color:var(--site-primary); font-weight:800; }
-.panel { margin-top:26px; }
-.hidden { display:none !important; }
-.content-panel { max-width:820px; margin:24px auto; }
-.content-panel h2 { margin-top:0; }
-.content-panel li { margin:10px 0; line-height:1.6; }
-.notice { background:var(--site-secondary); color:var(--site-on-secondary); padding:15px 17px; border-radius:16px; line-height:1.6; margin-top:18px; }
-.quiz-question { font-size:20px; font-weight:800; line-height:1.45; margin:10px 0 18px; }
-.answers { display:grid; gap:10px; }
-.answers button { text-align:left; padding:13px 15px; border:1px solid #e6d4e0; border-radius:13px; background:light-dark(#fff,#332a33); color:var(--site-on-background); cursor:pointer; }
-.answers button:hover { border-color:var(--site-primary); }
-.feedback { margin-top:14px; font-weight:700; min-height:24px; }
-.progress { height:8px; border-radius:99px; background:#eadde6; overflow:hidden; margin:12px 0 20px; }
-.progress span { display:block; height:100%; background:var(--site-primary); width:0%; transition:width .2s; }
-.field { display:grid; gap:7px; margin:14px 0; }
-.field input, .field textarea { width:100%; padding:12px 13px; border:1px solid #d9c8d4; border-radius:12px; background:light-dark(#fff,#302830); color:var(--site-on-background); font:inherit; }
-footer { text-align:center; padding:24px; color:#8a7885; font-size:13px; }
-@media(max-width:720px) { .top { align-items:flex-start; flex-direction:column; } .hero { grid-template-columns:1fr; } .hero-art { min-height:110px; } .hero-art:after { width:140px; height:140px; } .grid { grid-template-columns:1fr; } nav { width:100%; } nav button { font-size:12px; padding:8px 10px; } }
-@media(prefers-color-scheme:dark) { .hero { background:linear-gradient(130deg,#4c3447,#322b33); color:#fff3fb; } .hero .eyebrow { color:#f3badc; } .hero .muted { color:#e0cbd9; } .notice { background:#4a3446; color:#f7eaf3; } }
-@media(max-width:720px) {
-  header { background:#f7e8f1; color:#70425f; padding:16px 20px 10px; }
-  .top { align-items:center; flex-direction:row; }
-  .logo { background:#fff; color:#8d477b; }
-  .brand { font-size:20px; }
-  .brand small { display:none !important; }
-  nav { position:fixed; z-index:20; left:0; right:0; bottom:0; width:100%; padding:10px 5px calc(10px + env(safe-area-inset-bottom)); background:#fff; border-top:1px solid #f0e3eb; display:grid; grid-template-columns:repeat(4,1fr); gap:2px; box-shadow:0 -5px 20px #56344b0b; }
-  nav button { color:#806d7a; border:0; border-radius:10px; padding:8px 2px; font-size:11px; background:transparent; }
-  nav button.active, nav button:hover { color:#8d477b; background:#f8eaf2; }
-  main { padding:14px 16px 100px; }
-  .hero { display:block; padding:22px; border-radius:24px; background:#f7e8f1; }
-  .hero-art { display:none; }
-  .hero h1 { font-size:34px; }
-  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-  .card { padding:16px; border-radius:18px; }
-  .topic p { min-height:0; }
-  .section-head { margin-top:25px; }
-  footer { padding-bottom:100px; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genreverse</title>
+    <style>
+        :root {
+            --site-primary: #8d477b;
+            --site-on-primary: #ffffff;
+            --site-secondary: #f4dce9;
+            --site-on-secondary: #48233f;
+            --site-background: #fff8fc;
+            --site-on-background: #342631;
+            --site-font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+            --site-font-heading: Inter, ui-sans-serif, system-ui, sans-serif;
+            --site-heading-scale: 1;
+            --site-spacing-scale: 1;
+            --site-radius-scale: 1;
+            --site-decoration-opacity: 1;
+            color-scheme: light dark;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: var(--site-font-body); background-color: var(--site-background); color: var(--site-on-background); }
+        .app { min-height: 100vh; width: 100%; padding-bottom: 60px; }
+        header { background: var(--site-primary); color: var(--site-on-primary); padding: 20px; text-align: center; position: relative; }
+        .header-title-container { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px; }
+        .header-title-container span { font-size: 20px; }
+        header h1 { margin: 0; font-size: 24px; font-family: var(--site-font-heading); font-weight: 700; letter-spacing: 0.5px; }
+        header p { margin: 0; font-size: 11px; opacity: 0.9; font-weight: 500; letter-spacing: 0.2px; text-transform: uppercase; }
+        .theme-toggle { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; }
+        .content { max-width: 600px; margin: 0 auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+        .card { background: var(--site-secondary); color: var(--site-on-secondary); border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .card h2 { margin: 0 0 8px 0; font-size: 20px; font-weight: 700; }
+        .card p { margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; opacity: 0.85; }
+        .section-title { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 8px 0 4px 0; }
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .menu-item { background: #ffffff; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); text-decoration: none; color: inherit; }
+        .menu-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .menu-icon.stunting { background: #e8f5e9; color: #2e7d32; }
+        .menu-icon.anemia { background: #ffebee; color: #c62828; }
+        .menu-item h3 { margin: 0; font-size: 15px; font-weight: 700; }
+        .footer { text-align: center; padding: 32px 16px; font-size: 12px; opacity: 0.7; line-height: 1.6; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 16px; }
+        .footer-brand { font-weight: 700; }
+        .footer-disclaimer { font-style: italic; font-size: 11px; max-width: 500px; margin: 0 auto; }
+        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; height: 60px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid rgba(0,0,0,0.08); box-shadow: 0 -2px 10px rgba(0,0,0,0.02); z-index: 1000; }
+        .nav-link { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #8e8e93; font-size: 11px; gap: 4px; flex: 1; height: 100%; }
+        .nav-link.active { color: var(--site-primary); font-weight: 600; }
+        .nav-link span { font-size: 20px; }
+    </style>
 </head>
 <body>
-<div class="app">
-<header><div class="top"><div class="brand"><div class="logo">♡</div><div>KAMUS GENRE<small style="display:block;font-size:10px;font-weight:500;opacity:.85">Kenali Istilah, Pahami Diri</small></div></div><nav aria-label="Navigasi utama"><button class="active" data-page="home">Beranda</button><button data-page="kamus">Kamus</button><button data-page="quiz">Kuis</button><button data-page="rencana">Profil</button></nav></div></header>
-<main>
-<section id="home" class="page">
-<div class="hero"><div><div class="eyebrow">Kamus digital edukasi remaja</div><h1>Kenali istilahnya,<br>pahami informasinya.</h1><p class="muted">Temukan arti istilah seputar Generasi Berencana, kesehatan reproduksi, anemia, stunting, dan perencanaan masa depan dengan penjelasan yang sederhana.</p><button class="btn" data-go="kamus">Cari istilah →</button></div><div class="hero-art" aria-hidden="true"><span>📖</span></div></div>
-<div class="section-head"><div><h2>Kenapa Kamus GenRe?</h2><div class="muted">Informasi yang benar sebaiknya mudah ditemukan dan dipahami.</div></div></div>
-<div class="grid">
-<div class="card topic" data-topic="stunting"><div class="topic-icon">🌱</div><h3>Cegah Stunting</h3><p>Kenali pentingnya gizi, kesehatan, dan pencegahan sejak dini.</p><span class="arrow">Pelajari →</span></div>
-<div class="card topic" data-topic="anemia"><div class="topic-icon">🩸</div><h3>Cegah Anemia</h3><p>Pahami anemia, makanan bergizi, dan tablet tambah darah.</p><span class="arrow">Pelajari →</span></div>
-<div class="card topic" data-topic="reproduksi"><div class="topic-icon">💗</div><h3>Kesehatan Remaja</h3><p>Kenali perubahan diri dan pentingnya menjaga kesehatan.</p><span class="arrow">Pelajari →</span></div>
-</div>
-<div class="notice">✨ <b>Tujuan inovasi:</b> Membantu remaja memahami istilah dan informasi GenRe secara mandiri, sehingga tidak hanya mengenal istilahnya tetapi juga memahami maknanya.</div>
-</section>
-<section id="kamus" class="page hidden">
-<div class="section-head"><div><h2>Kamus Istilah GenRe 📚</h2><div class="muted">Cari istilah yang ingin kamu pahami.</div></div></div>
-<div class="card">
-<div class="field"><label for="dictionary-search">Cari istilah atau kata kunci</label><input id="dictionary-search" type="search" placeholder="Contoh: anemia, pubertas, PUP..."></div>
-<div class="field"><label for="dictionary-category">Pilih kategori</label><select id="dictionary-category"><option value="semua">Semua kategori</option><option value="genre">Dasar GenRe</option><option value="reproduksi">Kesehatan Reproduksi</option><option value="gizi">Gizi, Anemia & Stunting</option><option value="masa-depan">Perencanaan Masa Depan</option></select></div>
-<p id="dictionary-count" class="muted" aria-live="polite"></p>
-<div id="dictionary-results" class="grid"></div>
-</div>
-<div id="dictionary-detail" class="card content-panel hidden" aria-live="polite"></div>
-</section>
-<section id="materi" class="page hidden">
-<div class="section-head"><div><h2>Ruang edukasi</h2><div class="muted">Materi singkat untuk menambah pengetahuanmu.</div></div></div>
-<div id="topic-list" class="grid">
-<div class="card topic" data-topic="stunting"><div class="topic-icon">🌱</div><h3>Stunting</h3><p>Pengertian, faktor risiko, dan pencegahan.</p><span class="arrow">Buka materi →</span></div>
-<div class="card topic" data-topic="anemia"><div class="topic-icon">🩸</div><h3>Anemia</h3><p>Gejala umum, sumber zat besi, dan pencegahan.</p><span class="arrow">Buka materi →</span></div>
-<div class="card topic" data-topic="reproduksi"><div class="topic-icon">💗</div><h3>Kesehatan reproduksi</h3><p>Pubertas, kebersihan diri, dan mencari bantuan.</p><span class="arrow">Buka materi →</span></div>
-</div>
-<div id="topic-detail" class="card content-panel hidden"></div>
-</section>
-<section id="quiz" class="page hidden">
-<div class="content-panel card"><div class="eyebrow">Uji pengetahuanmu</div><h2>Kuis GenRe 🎯</h2><div class="muted">Jawab pertanyaan berikut. Kamu bisa mengulang kuis kapan saja.</div><div class="progress"><span id="bar"></span></div><div id="quiz-area"><div id="quiz-count" class="muted"></div><div id="question" class="quiz-question"></div><div id="answers" class="answers"></div><div id="feedback" class="feedback" aria-live="polite"></div><button id="next" class="btn hidden" style="margin-top:16px">Berikutnya →</button></div><div id="quiz-result" class="hidden"><h3 id="score-title"></h3><p id="score-text" class="muted"></p><button class="btn" id="restart">Ulangi kuis</button></div></div>
-</section>
-<section id="rencana" class="page hidden">
-<div class="content-panel card"><div class="eyebrow">Langkah kecil hari ini</div><h2>Rencana Masa Depanku ✨</h2><p class="muted">Tuliskan impianmu dan satu langkah sederhana yang bisa kamu mulai. Catatan ini hanya tampil di halaman ini selama sesi dibuka.</p><div class="field"><label for="dream">Apa cita-cita atau tujuanmu?</label><input id="dream" placeholder="Contoh: menjadi pengusaha"></div><div class="field"><label for="step">Langkah kecil yang akan aku lakukan</label><textarea id="step" rows="3" placeholder="Contoh: belajar mengelola uang dan berlatih berkomunikasi"></textarea></div><button class="btn" id="make-plan">Buat kartu tekadku</button><div id="plan-output" class="notice hidden" aria-live="polite"></div></div>
-</section>
-</main>
-<footer>KAMUS GENRE · Kenali Istilah, Pahami Diri.<br><span>Materi ini bersifat edukasi umum, bukan pengganti konsultasi tenaga kesehatan.</span></footer>
-</div>
-<script>
-const pages = [...document.querySelectorAll('.page')];
-function showPage(id){ pages.forEach(p=>p.classList.toggle('hidden',p.id!==id)); document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id)); window.scrollTo({top:0,behavior:'smooth'}); }
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));
-const glossary=[
-{term:'GenRe (Generasi Berencana)',category:'genre',label:'Dasar GenRe',meaning:'Program yang mendorong remaja merencanakan kehidupan secara matang, menjalani perilaku sehat, dan mempersiapkan masa depan.',example:'Contoh: merencanakan pendidikan, pekerjaan, dan kehidupan keluarga.'},
-{term:'PIK-R',category:'genre',label:'Dasar GenRe',meaning:'Pusat Informasi dan Konseling Remaja, yaitu wadah kegiatan yang menyediakan informasi dan layanan konseling bagi remaja.',example:'Contoh: mengikuti kegiatan edukasi dan konseling sebaya sesuai pedoman.'},
-{term:'Pendewasaan Usia Perkawinan (PUP)',category:'masa-depan',label:'Perencanaan Masa Depan',meaning:'Upaya meningkatkan kesadaran tentang pentingnya merencanakan usia perkawinan dengan mempertimbangkan kesiapan fisik, mental, pendidikan, dan ekonomi.',example:'Contoh: menyelesaikan pendidikan dan mempersiapkan kemandirian sebelum membangun keluarga.'},
-{term:'Pubertas',category:'reproduksi',label:'Kesehatan Reproduksi',meaning:'Masa ketika tubuh mengalami perubahan fisik dan hormon menuju kematangan seksual. Waktu dan prosesnya dapat berbeda pada setiap orang.',example:'Contoh: perubahan suara, pertumbuhan rambut tubuh, menstruasi, atau mimpi basah.'},
-{term:'Kesehatan Reproduksi',category:'reproduksi',label:'Kesehatan Reproduksi',meaning:'Keadaan sehat secara fisik, mental, dan sosial yang berkaitan dengan sistem dan fungsi reproduksi.',example:'Contoh: memahami perubahan pubertas, menjaga kebersihan diri, dan mencari informasi tepercaya.'},
-{term:'Anemia',category:'gizi',label:'Gizi, Anemia & Stunting',meaning:'Kondisi ketika kadar hemoglobin dalam darah lebih rendah dari normal. Kekurangan zat besi merupakan salah satu penyebabnya.',example:'Contoh: pencegahan dapat meliputi makanan bergizi dan tablet tambah darah sesuai anjuran petugas kesehatan.'},
-{term:'Tablet Tambah Darah (TTD)',category:'gizi',label:'Gizi, Anemia & Stunting',meaning:'Suplemen yang mengandung zat besi dan asam folat untuk membantu mencegah atau menangani anemia sesuai petunjuk tenaga kesehatan.',example:'Contoh: remaja putri mengikuti program TTD sesuai arahan petugas kesehatan.'},
-{term:'Stunting',category:'gizi',label:'Gizi, Anemia & Stunting',meaning:'Gangguan pertumbuhan dan perkembangan anak akibat kekurangan gizi kronis dan infeksi berulang, terutama pada 1.000 hari pertama kehidupan.',example:'Contoh: pencegahan melalui pemenuhan gizi dan layanan kesehatan ibu-anak.'},
-{term:'1000 Hari Pertama Kehidupan',category:'gizi',label:'Gizi, Anemia & Stunting',meaning:'Periode sejak terbentuknya janin dalam kehamilan hingga anak berusia dua tahun. Periode ini penting untuk pertumbuhan dan perkembangan.',example:'Contoh: perhatian pada gizi ibu hamil, ASI, dan makanan pendamping ASI sesuai usia.'},
-{term:'Perencanaan Masa Depan',category:'masa-depan',label:'Perencanaan Masa Depan',meaning:'Proses menentukan tujuan hidup dan menyusun langkah yang realistis untuk mencapainya.',example:'Contoh: menetapkan target pendidikan, mengembangkan keterampilan, dan belajar mengelola keuangan.'},
-{term:'Konseling Sebaya',category:'genre',label:'Dasar GenRe',meaning:'Kegiatan saling memberi dukungan dan informasi antar teman sebaya dengan tetap menghormati privasi serta mengetahui kapan perlu merujuk ke tenaga profesional.',example:'Contoh: mendengarkan teman tanpa menghakimi dan mengarahkannya ke guru BK atau tenaga kesehatan bila diperlukan.'},
-{term:'Pendewasaan Kehidupan Berkeluarga',category:'masa-depan',label:'Perencanaan Masa Depan',meaning:'Persiapan untuk menjalani kehidupan keluarga dengan mempertimbangkan kesiapan kesehatan, pendidikan, mental, sosial, dan ekonomi.',example:'Contoh: memahami tanggung jawab dan membangun hubungan yang saling menghormati.'}
-];
-const searchInput=document.getElementById('dictionary-search'),categoryInput=document.getElementById('dictionary-category'),resultsBox=document.getElementById('dictionary-results'),detailBox=document.getElementById('dictionary-detail');
-function renderGlossary(){const q=searchInput.value.trim().toLocaleLowerCase('id'),cat=categoryInput.value;const found=glossary.filter(x=>(cat==='semua'||x.category===cat)&&(`${x.term} ${x.meaning} ${x.label}`).toLocaleLowerCase('id').includes(q));document.getElementById('dictionary-count').textContent=`Menampilkan ${found.length} dari ${glossary.length} istilah`;resultsBox.innerHTML='';detailBox.classList.add('hidden');found.forEach(item=>{const card=document.createElement('button');card.className='card topic';card.type='button';card.style.textAlign='left';card.style.color='var(--site-on-background)';card.innerHTML=`<div class="eyebrow">${item.label}</div><h3>${escapeHtml(item.term)}</h3><p>${escapeHtml(item.meaning)}</p><span class="arrow">Baca penjelasan →</span>`;card.addEventListener('click',()=>{detailBox.innerHTML=`<button class="btn secondary" id="close-definition">← Kembali ke daftar</button><div class="eyebrow" style="margin-top:20px">${item.label}</div><h2>${escapeHtml(item.term)}</h2><p style="line-height:1.7">${escapeHtml(item.meaning)}</p><div class="notice"><b>Contoh:</b> ${escapeHtml(item.example)}</div>`;detailBox.classList.remove('hidden');document.getElementById('close-definition').addEventListener('click',()=>detailBox.classList.add('hidden'));detailBox.scrollIntoView({behavior:'smooth',block:'start'});});resultsBox.appendChild(card);});if(!found.length)resultsBox.innerHTML='<div class="notice">Istilah belum ditemukan. Coba kata kunci lain atau pilih kategori berbeda.</div>';}
-searchInput.addEventListener('input',renderGlossary);categoryInput.addEventListener('change',renderGlossary);renderGlossary();
-const topics={
- stunting:{title:'🌱 Mengenal stunting',body:`<p><b>Stunting</b> adalah gangguan pertumbuhan dan perkembangan anak akibat kekurangan gizi kronis dan infeksi berulang, terutama pada 1.000 hari pertama kehidupan.</p><ul><li>Pencegahan dimulai sejak sebelum kehamilan dan berlanjut selama kehamilan hingga anak berusia dua tahun.</li><li>Penuhi kebutuhan gizi dengan makanan beragam dan seimbang.</li><li>Jaga kebersihan, gunakan air bersih, dan ikuti imunisasi serta pemeriksaan kesehatan sesuai anjuran.</li><li>Remaja dapat ikut berperan dengan belajar gizi, menjaga kesehatan, dan menyebarkan informasi yang benar.</li></ul><div class="notice">Ingat: stunting bukan sekadar masalah tinggi badan dan tidak bisa dinilai hanya dari penampilan seseorang.</div>`},
- anemia:{title:'🩸 Mengenal anemia',body:`<p><b>Anemia</b> adalah kondisi ketika kadar hemoglobin dalam darah lebih rendah dari normal. Salah satu penyebabnya adalah kekurangan zat besi.</p><ul><li>Konsumsi makanan sumber zat besi seperti daging, ikan, telur, dan kacang-kacangan.</li><li>Padukan makanan sumber zat besi dengan buah atau sayur sumber vitamin C.</li><li>Remaja putri dianjurkan mengikuti program tablet tambah darah sesuai arahan petugas kesehatan dan aturan setempat.</li><li>Jika sering lemas, pusing, atau mudah lelah, bicarakan dengan orang dewasa tepercaya dan periksa ke fasilitas kesehatan.</li></ul><div class="notice">Jangan mendiagnosis anemia sendiri. Tenaga kesehatan dapat membantu memastikan penyebab dan penanganannya.</div>`},
- reproduksi:{title:'💗 Kesehatan reproduksi remaja',body:`<p>Kesehatan reproduksi mencakup kesejahteraan fisik, mental, dan sosial yang berkaitan dengan sistem reproduksi.</p><ul><li>Pubertas membawa perubahan fisik dan emosi yang berbeda pada setiap orang.</li><li>Jaga kebersihan tubuh dan organ reproduksi dengan cara yang lembut dan benar.</li><li>Pahami batasan pribadi, rasa aman, persetujuan, dan hubungan yang saling menghormati.</li><li>Cari informasi dari sumber tepercaya serta bicarakan pertanyaan dengan orang dewasa tepercaya atau tenaga kesehatan.</li></ul><div class="notice">Kamu berhak bertanya tanpa dipermalukan dan berhak mendapatkan informasi kesehatan yang benar.</div>`}
-};
-function openTopic(key){const d=topics[key];const box=document.getElementById('topic-detail');box.innerHTML=`<button class="btn secondary" id="back-topics">← Kembali ke materi</button><h2 style="margin-top:20px">${d.title}</h2>${d.body}`;box.classList.remove('hidden');document.getElementById('topic-list').classList.add('hidden');document.getElementById('back-topics').addEventListener('click',()=>{box.classList.add('hidden');document.getElementById('topic-list').classList.remove('hidden')});showPage('materi');}
-document.querySelectorAll('[data-topic]').forEach(el=>el.addEventListener('click',()=>openTopic(el.dataset.topic)));
-const questions=[
- {q:'Kapan pencegahan stunting perlu dimulai?',a:['Sejak sebelum kehamilan dan 1.000 hari pertama kehidupan','Hanya saat anak masuk sekolah','Saat anak sudah remaja'],c:0,e:'Pencegahan perlu dimulai sejak sebelum kehamilan dan berlanjut pada masa awal kehidupan.'},
- {q:'Zat gizi apa yang berkaitan erat dengan anemia akibat kekurangan zat besi?',a:['Kalsium','Zat besi','Serat'],c:1,e:'Zat besi dibutuhkan tubuh untuk membantu pembentukan hemoglobin.'},
- {q:'Jika memiliki pertanyaan tentang kesehatan reproduksi, sebaiknya kita...',a:['Memercayai semua rumor','Mencari informasi dari sumber tepercaya dan tenaga kesehatan','Menyimpan kekhawatiran sendiri'],c:1,e:'Sumber tepercaya dan tenaga kesehatan dapat memberikan informasi yang tepat.'},
- {q:'Apa contoh langkah merencanakan masa depan?',a:['Menentukan tujuan dan langkah kecil','Menunggu semuanya terjadi','Mengikuti semua pilihan teman'],c:0,e:'Tujuan yang jelas dan langkah kecil membantu kita mulai merencanakan masa depan.'}
-];
-let qi=0,score=0,answered=false;
-function renderQ(){answered=false;const q=questions[qi];document.getElementById('quiz-count').textContent=`Pertanyaan ${qi+1} dari ${questions.length}`;document.getElementById('bar').style.width=`${qi/questions.length*100}%`;document.getElementById('question').textContent=q.q;document.getElementById('feedback').textContent='';document.getElementById('next').classList.add('hidden');const wrap=document.getElementById('answers');wrap.innerHTML='';q.a.forEach((a,i)=>{const b=document.createElement('button');b.textContent=a;b.addEventListener('click',()=>choose(i));wrap.appendChild(b)});}
-function choose(i){if(answered)return;answered=true;const q=questions[qi];if(i===q.c)score++;[...document.querySelectorAll('#answers button')].forEach((b,j)=>{b.disabled=true;if(j===q.c)b.style.borderColor='#26845b';if(j===i&&i!==q.c)b.style.borderColor='#bd5260'});document.getElementById('feedback').textContent=(i===q.c?'Benar! ':'Belum tepat. ')+q.e;document.getElementById('next').textContent=qi===questions.length-1?'Lihat hasil':'Berikutnya →';document.getElementById('next').classList.remove('hidden');}
-document.getElementById('next').addEventListener('click',()=>{qi++;if(qi<questions.length)renderQ();else{document.getElementById('quiz-area').classList.add('hidden');document.getElementById('quiz-result').classList.remove('hidden');document.getElementById('bar').style.width='100%';document.getElementById('score-title').textContent=`Skormu: ${score} dari ${questions.length}`;document.getElementById('score-text').textContent=score===questions.length?'Hebat! Kamu menjawab semua pertanyaan dengan benar.': 'Terus belajar, ya. Kamu bisa membaca materi dan mencoba lagi.';}});
-function resetQuiz(){qi=0;score=0;document.getElementById('quiz-area').classList.remove('hidden');document.getElementById('quiz-result').classList.add('hidden');renderQ();}
-document.getElementById('restart').addEventListener('click',resetQuiz);renderQ();
-document.getElementById('make-plan').addEventListener('click',()=>{const dream=document.getElementById('dream').value.trim(),step=document.getElementById('step').value.trim(),out=document.getElementById('plan-output');if(!dream||!step){out.textContent='Isi cita-cita dan satu langkah kecilmu terlebih dahulu.';out.classList.remove('hidden');return;}out.innerHTML='🌟 <b>Kartu tekadku</b><br>Aku ingin: '+escapeHtml(dream)+'<br>Langkah pertamaku: '+escapeHtml(step)+'<br><br>Aku akan berusaha selangkah demi selangkah!';out.classList.remove('hidden');});
-function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-<!-- === BAGIAN TUJUAN INOVASI === -->
-<div style="padding: 0 15px; margin-bottom: 30px; font-family: sans-serif;">
-    <!-- Teks Pelajari Panduan -->
-    <p style="color: #8d477b; font-weight: bold; font-size: 16px; margin-bottom: 25px;">
-        Pelajari Panduan →
-    </p>
+    <div class="app">
+        <header>
+            <div class="header-title-container">
+                <span>❤️</span>
+                <h1>GENREVERSE</h1>
+            </div>
+            <p>KENALI ISTILAH, PAHAMI DIRI, BANGUN GENERASI BERKUALITAS</p>
+            <button class="theme-toggle">🌙</button>
+        </header>
 
-    <!-- Kotak Ungu Tujuan Inovasi -->
-    <div style="background-color: #fff0f8; border-left: 5px solid #8d477b; padding: 20px; border-radius: 8px; text-align: left;">
-        <p style="color: #333; font-size: 15px; line-height: 1.6; margin: 0;">
+        <div class="content">
+            <div class="card">
+                <h2>Kenali istilahnya, pahami masa depanmu.</h2>
+                <p>Platform digital resmi Genreverse. Temukan makna istilah kesehatan reproduksi, pencegahan stunting & anemia, serta persiapkan masa depan cerdas tanpa keraguan.</p>
+            </div>
 
-  <!-- === BAGIAN TUJUAN INOVASI DAN FOOTER FIX === -->
-<div style="padding: 0 15px; margin-bottom: 30px; font-family: sans-serif;">
-    <p style="color: #8d477b; font-weight: bold; font-size: 16px; margin-bottom: 25px;">
-        Pelajari Panduan →
-    </p>
-    <div style="background-color: #fff0f8; border-left: 5px solid #8d477b; padding: 20px; border-radius: 8px; text-align: left;">
-        <p style="color: #333; font-size: 15px; line-height: 1.6; margin: 0;">
-            💡 <strong style="color: #8d477b;">Tujuan Inovasi:</strong> Membantu remaja Indonesia memahami istilah dan materi Generasi Berencana secara mandiri dan interaktif. Berencana itu keren!
-        </p>
+            <div class="section-title">
+                <span>🛡️</span> Salam GenRe & Triad KRR
+            </div>
+
+            <div class="menu-grid">
+                <a href="#" class="menu-item">
+                    <div class="menu-icon stunting">🌱</div>
+                    <h3>PUP & Penundaan Pernikahan Dini</h3>
+                    <p style="margin:0; font-size:12px; opacity:0.7; line-height:1.4;">Menyarankan usia minimal 21 tahun untuk wanita dan 25 tahun untuk pria demi kesiapan mental dan fisik.</p>
+                </a>
+                <a href="#" class="menu-item">
+                    <div class="menu-icon anemia">🩸</div>
+                    <h3>Cegah Anemia</h3>
+                    <p style="margin:0; font-size:12px; opacity:0.7; line-height:1.4;">Edukasi pencegahan kekurangan sel darah merah pada remaja melalui pola nutrisi seimbang.</p>
+                </a>
+            </div>
+
+            <div class="card" style="background: var(--site-secondary); color: var(--site-on-secondary); margin-top: 8px; text-align: left;">
+                <p style="margin: 0 0 8px 0; font-weight: 700;">💡 Tujuan Inovasi:</p>
+                <p style="margin: 0; font-size: 13px; line-height: 1.5;">Membantu remaja Indonesia memahami istilah dan materi Generasi Berencana secara mandiri dan interaktif. Berencana itu keren!</p>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-brand">GENREVERSE INDONESIA · Kenali Istilah, Pahami Diri, Bangun Generasi Berkualitas.</div>
+                <div>Inovasi media edukasi Generasi Berencana (GenRe) untuk remaja sehat, cerdas, dan ceria.</div>
+                <div class="footer-disclaimer">Materi ini bersifat edukasi umum remaja dan pembinaan keluarga. Bukan merupakan pengganti diagnosis atau resep medis formal. Konsultasikan kondisi kesehatan dengan dokter atau fasilitas kesehatan tepercaya.</div>
+                <div style="margin-top: 4px;">© 2026 Genreverse Indonesia. Developed & Designed by Amita Komairah Mita.</div>
+            </footer>
+        </div>
+
+        <nav class="nav-bar">
+            <a href="#" class="nav-link active"><span>🏠</span>Beranda</a>
+            <a href="#" class="nav-link"><span>📚</span>Kamus</a>
+            <a href="#" class="nav-link"><span>🎯</span>Edukasi</a>
+            <a href="#" class="nav-link"><span>👤</span>Profil</a>
+        </nav>
     </div>
-</div>
+</body>
+</html>
 
-<div style="text-align: center; background: #ffffff; padding: 30px 15px; font-family: sans-serif; margin-bottom: 70px;">
-    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
-        Inovasi media edukasi Generasi Berencana (GenRe)<br>untuk remaja sehat, cerdas, dan ceria.
-    </p>
-    
-    <p style="color: #999; font-size: 13px; max-width: 600px; margin: 0 auto 25px auto; line-height: 1.6;">
-        Materi ini bersifat edukasi umum remaja dan pembinaan keluarga. Bukan merupakan pengganti diagnosis atau resep medis formal. Konsultasikan kondisi kesehatan dengan dokter atau fasilitas kesehatan tepercaya.
-    </p>
-    
-    <p style="color: #666; font-size: 14px; line-height: 1.5; font-weight: bold;">
-        © 2026 Kamus GenRe Indonesia.<br>Developed & Designed by Amita Komairah Mita.
-    </p>
-</div>
-
-</script>
 
 
 
